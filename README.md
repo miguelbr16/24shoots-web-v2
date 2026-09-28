@@ -55,7 +55,9 @@ Resumen funcional, funnel, rueda de clientes, portfolio y commits recientes:
 
 ## Formulario de contacto
 
-El MVP registra envíos en consola del servidor. Para producción, conecta Resend o SendGrid en `src/app/api/contact/route.ts`.
+Envía por email con Resend (API HTTP). Configura `RESEND_API_KEY` y `CONTACT_FROM_EMAIL` (ver `.env.example`). Sin configuración, la API responde 503 y el formulario muestra el email y WhatsApp como alternativa: nunca confirma un envío que no se ha hecho.
+
+Diagnóstico y plan de mejora: [`docs/DIAGNOSTICO-Y-PLAN-2026-09.md`](docs/DIAGNOSTICO-Y-PLAN-2026-09.md)
 
 ## Pendiente del cliente
 

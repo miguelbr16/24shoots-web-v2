@@ -10,6 +10,7 @@ import packsEn from "../../content/en/packs.json";
 import clientsData from "../../content/clients.json";
 import instagramEs from "../../content/es/instagram.json";
 import instagramEn from "../../content/en/instagram.json";
+import type { ServiceSlugPair } from "./i18n";
 import type {
   Locale,
   InstagramPost,
@@ -46,8 +47,16 @@ const packsByLocale: Record<Locale, Pack[]> = {
   en: packsEn as Pack[],
 };
 
+/**
+ * `NEXT_PUBLIC_SITE_URL` permite fijar el dominio canónico por entorno
+ * (preview, producción, Cloudflare…) sin tocar `config/site.json`.
+ */
+const siteUrl = (
+  process.env.NEXT_PUBLIC_SITE_URL || (siteConfig as SiteConfig).url
+).replace(/\/$/, "");
+
 export function getSiteConfig(): SiteConfig {
-  return siteConfig as SiteConfig;
+  return { ...(siteConfig as SiteConfig), url: siteUrl };
 }
 
 export function getServices(locale: Locale): Service[] {
@@ -61,8 +70,18 @@ export function getServiceBySlug(
   return getServices(locale).find((s) => s.slug === slug);
 }
 
+/** Pares de slugs ES/EN de cada servicio (mismo `id` en ambos idiomas). */
+export function getServiceSlugPairs(): ServiceSlugPair[] {
+  return servicesByLocale.es.map((service) => ({
+    es: service.slug,
+    en:
+      servicesByLocale.en.find((s) => s.id === service.id)?.slug ??
+      service.slug,
+  }));
+}
+
 export function getPortfolio(locale: Locale): PortfolioItem[] {
-  return portfolioByLocale[locale];
+  return portfolioByLocale[locale].filter((item) => item.published !== false);
 }
 
 export function getPages(locale: Locale): PagesContent {
@@ -80,7 +99,7 @@ export function getPacks(locale: Locale): Pack[] {
 const clients = clientsData as ClientLogo[];
 
 export function getFeaturedClients(): ClientLogo[] {
-  return clients.filter((c) => c.featured !== false);
+  return clients.filter((c) => c.featured !== false && c.verified === true);
 }
 
 export function getAlternateLocale(locale: Locale): Locale {

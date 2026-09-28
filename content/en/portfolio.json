@@ -1,9 +1,10 @@
 [
   {
     "id": "hutamaki-aftermovie",
-    "title": "Hutamaki aftermovie",
+    "published": true,
+    "title": "Huhtamaki aftermovie",
     "description": "Client delivery video with dynamic pacing and brand storytelling.",
-    "client": "Hutamaki",
+    "client": "Huhtamaki",
     "format": "4K · 16:9 · Aftermovie",
     "location": "Valencia",
     "challenge": "Summarise the project in an aftermovie that works for web and social.",
@@ -21,6 +22,7 @@
   },
   {
     "id": "imperia-mas-events",
+    "published": true,
     "title": "Imperia Más Events",
     "description": "Event audiovisual coverage with a high-impact aftermovie.",
     "client": "Imperia Más Events",
@@ -41,6 +43,7 @@
   },
   {
     "id": "premios-isabel-ferrer",
+    "published": true,
     "title": "Premios Isabel Ferrer",
     "description": "Awards gala aftermovie with elegant coverage.",
     "client": "Premios Isabel Ferrer",
@@ -61,6 +64,7 @@
   },
   {
     "id": "pivc-aftermovie",
+    "published": true,
     "title": "PIVC — Aftermovie",
     "description": "Audiovisual production for PIVC event with polished final delivery.",
     "client": "PIVC",
@@ -81,6 +85,7 @@
   },
   {
     "id": "aftermovie-oficial",
+    "published": true,
     "title": "Official aftermovie",
     "description": "Showreel highlight with the best of 24Shoots production.",
     "client": "24Shoots Media",
@@ -101,6 +106,7 @@
   },
   {
     "id": "version-cliente",
+    "published": true,
     "title": "Client project",
     "description": "Custom final delivery focused on visual storytelling.",
     "client": "Private client",
@@ -114,13 +120,14 @@
     "sectors": [],
     "categories": ["eventos-corporativos"],
     "type": "video",
-    "thumbnail": "/videos/web/posters/hutamaki.jpg",
+    "thumbnail": "/videos/web/posters/cliente.jpg",
     "videoUrl": "/videos/web/version-cliente-web.mp4",
     "instagramUrl": "https://www.instagram.com/24shootsmedia/",
     "featured": false
   },
   {
     "id": "evento-corporativo",
+    "published": false,
     "title": "Corporate event",
     "description": "Full audiovisual coverage with aftermovie and social content.",
     "client": "B2B company",
@@ -141,6 +148,7 @@
   },
   {
     "id": "reel-marca-gastro",
+    "published": false,
     "title": "Brand content · hospitality",
     "description": "Dynamic reel for a restaurant focused on product and atmosphere.",
     "client": "Restaurante La Marina",
@@ -161,6 +169,7 @@
   },
   {
     "id": "pack-redes-mensual",
+    "published": false,
     "title": "Brand content · monthly pack",
     "description": "Content plan and audiovisual pieces for consistent social presence.",
     "client": "Local brand",
@@ -181,6 +190,7 @@
   },
   {
     "id": "documental-empresa",
+    "published": false,
     "title": "Corporate documentary",
     "description": "B2B narrative piece about team and production process.",
     "client": "Industrial company",
@@ -201,6 +211,7 @@
   },
   {
     "id": "videoclip-artista",
+    "published": false,
     "title": "Music video · local artist",
     "description": "Music production with urban night aesthetic.",
     "client": "Independent artist",
@@ -221,6 +232,7 @@
   },
   {
     "id": "boda-valencia",
+    "published": false,
     "title": "Wedding in Valencia",
     "description": "Cinematic video and artistic photography of an intimate wedding.",
     "client": "María & Carlos",
@@ -241,6 +253,7 @@
   },
   {
     "id": "aftermovie-fiesta",
+    "published": false,
     "title": "Aftermovie · private party",
     "description": "Dynamic night recap with club aesthetic.",
     "client": "Private client",
@@ -261,6 +274,7 @@
   },
   {
     "id": "fallas-instalacion",
+    "published": false,
     "title": "Fallas · falla monument",
     "description": "Audiovisual coverage of monument and mascletà.",
     "client": "Falla commission",
@@ -281,6 +295,7 @@
   },
   {
     "id": "proyecto-arte",
+    "published": false,
     "title": "Custom project · urban art",
     "description": "Hybrid photo + video piece for visual artist.",
     "client": "Bespoke brief",
@@ -301,6 +316,7 @@
   },
   {
     "id": "campana-ads-retail",
+    "published": false,
     "title": "Paid campaign · retail",
     "description": "Vertical creatives for Meta Ads with A/B variations.",
     "client": "Retail brand",
@@ -321,6 +337,7 @@
   },
   {
     "id": "dron-promocion",
+    "published": false,
     "title": "Aerial production · urban setting",
     "description": "Aerial shots integrated into promotional video.",
     "client": "Developer",
@@ -341,6 +358,7 @@
   },
   {
     "id": "sesion-producto",
+    "published": false,
     "title": "Brand content · product",
     "description": "Premium product photography for e-commerce and social.",
     "client": "Retail brand",

@@ -141,7 +141,7 @@
     "statsSection": [
       { "value": "Valencia", "label": "Base operativa" },
       { "value": "España", "label": "Cobertura nacional" },
-      { "value": "7", "label": "Líneas de servicio" },
+      { "value": "10", "label": "Líneas de servicio" },
       { "value": "24h", "label": "Respuesta orientativa" }
     ],
     "clientsSection": {

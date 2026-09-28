@@ -67,11 +67,15 @@ export interface ClientLogo {
   monogram?: string;
   logo: string | null;
   featured?: boolean;
+  /** Solo se muestra si el cliente ha autorizado el uso de su logo real */
+  verified?: boolean;
   url?: string | null;
 }
 
 export interface PortfolioItem {
   id: string;
+  /** false = ejemplo/placeholder: no se publica en la web */
+  published?: boolean;
   title: string;
   description: string;
   services: string[];
@@ -171,7 +175,14 @@ export interface PagesContent {
     reviewsSection: {
       title: string;
       subtitle: string;
-      items: { quote: string; author: string; role: string; service: string }[];
+      items: {
+        quote: string;
+        author: string;
+        role: string;
+        service: string;
+        /** Solo se publican reseñas reales y autorizadas */
+        verified?: boolean;
+      }[];
     };
     reelSection: { title: string; subtitle: string; cta: string; image?: string; video?: string };
     marqueeText: string;

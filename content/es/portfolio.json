@@ -1,9 +1,10 @@
 [
   {
     "id": "hutamaki-aftermovie",
-    "title": "Aftermovie Hutamaki",
+    "published": true,
+    "title": "Aftermovie Huhtamaki",
     "description": "Vídeo de entrega para cliente corporativo con ritmo dinámico y narrativa de marca.",
-    "client": "Hutamaki",
+    "client": "Huhtamaki",
     "format": "4K · 16:9 · Aftermovie",
     "location": "Valencia",
     "challenge": "Resumir la esencia del proyecto en un aftermovie que funcione para web y redes.",
@@ -21,6 +22,7 @@
   },
   {
     "id": "imperia-mas-events",
+    "published": true,
     "title": "Imperia Más Events",
     "description": "Cobertura audiovisual de evento con aftermovie de alto impacto visual.",
     "client": "Imperia Más Events",
@@ -41,6 +43,7 @@
   },
   {
     "id": "premios-isabel-ferrer",
+    "published": true,
     "title": "Premios Isabel Ferrer",
     "description": "Aftermovie de gala y premios con estética elegante y cobertura completa.",
     "client": "Premios Isabel Ferrer",
@@ -61,6 +64,7 @@
   },
   {
     "id": "pivc-aftermovie",
+    "published": true,
     "title": "PIVC — Aftermovie",
     "description": "Producción audiovisual para evento PIVC con entrega final pulida.",
     "client": "PIVC",
@@ -81,6 +85,7 @@
   },
   {
     "id": "aftermovie-oficial",
+    "published": true,
     "title": "Aftermovie oficial",
     "description": "Pieza destacada de showreel con lo mejor de la producción 24Shoots.",
     "client": "24Shoots Media",
@@ -101,6 +106,7 @@
   },
   {
     "id": "version-cliente",
+    "published": true,
     "title": "Proyecto cliente",
     "description": "Entrega final personalizada para cliente con enfoque en storytelling visual.",
     "client": "Cliente privado",
@@ -114,13 +120,14 @@
     "sectors": [],
     "categories": ["eventos-corporativos"],
     "type": "video",
-    "thumbnail": "/videos/web/posters/hutamaki.jpg",
+    "thumbnail": "/videos/web/posters/cliente.jpg",
     "videoUrl": "/videos/web/version-cliente-web.mp4",
     "instagramUrl": "https://www.instagram.com/24shootsmedia/",
     "featured": false
   },
   {
     "id": "evento-corporativo",
+    "published": false,
     "title": "Evento corporativo",
     "description": "Cobertura audiovisual completa con aftermovie y contenido para redes.",
     "client": "Empresa B2B",
@@ -141,6 +148,7 @@
   },
   {
     "id": "reel-marca-gastro",
+    "published": false,
     "title": "Contenido de marca · hostelería",
     "description": "Reel dinámico para restaurante con enfoque en producto y ambiente.",
     "client": "Restaurante La Marina",
@@ -161,6 +169,7 @@
   },
   {
     "id": "pack-redes-mensual",
+    "published": false,
     "title": "Contenido de marca · pack mensual",
     "description": "Plan de contenido y piezas audiovisuales para presencia constante en redes.",
     "client": "Marca local",
@@ -181,6 +190,7 @@
   },
   {
     "id": "documental-empresa",
+    "published": false,
     "title": "Documental corporativo",
     "description": "Pieza narrativa B2B sobre el equipo y el proceso productivo.",
     "client": "Empresa industrial",
@@ -201,6 +211,7 @@
   },
   {
     "id": "videoclip-artista",
+    "published": false,
     "title": "Videoclip · artista local",
     "description": "Producción musical con estética nocturna urbana.",
     "client": "Artista independiente",
@@ -221,6 +232,7 @@
   },
   {
     "id": "boda-valencia",
+    "published": false,
     "title": "Boda en Valencia",
     "description": "Vídeo cinematográfico y fotografía artística de una boda íntima.",
     "client": "María & Carlos",
@@ -241,6 +253,7 @@
   },
   {
     "id": "aftermovie-fiesta",
+    "published": false,
     "title": "Aftermovie · fiesta privada",
     "description": "Resumen dinámico de noche con estética club y flash.",
     "client": "Cliente privado",
@@ -261,6 +274,7 @@
   },
   {
     "id": "fallas-instalacion",
+    "published": false,
     "title": "Fallas · instalación fallera",
     "description": "Cobertura audiovisual de monumento y mascletà.",
     "client": "Comisión fallera",
@@ -281,6 +295,7 @@
   },
   {
     "id": "proyecto-arte",
+    "published": false,
     "title": "Proyecto personalizado · arte urbano",
     "description": "Pieza híbrida foto + vídeo para artista visual.",
     "client": "Proyecto a medida",
@@ -301,6 +316,7 @@
   },
   {
     "id": "campana-ads-retail",
+    "published": false,
     "title": "Campaña de pago · retail",
     "description": "Creatividades en vertical para Meta Ads con variaciones A/B.",
     "client": "Marca retail",
@@ -321,6 +337,7 @@
   },
   {
     "id": "dron-promocion",
+    "published": false,
     "title": "Producción aérea · entorno urbano",
     "description": "Tomas aéreas integradas en vídeo promocional.",
     "client": "Promotora",
@@ -341,6 +358,7 @@
   },
   {
     "id": "sesion-producto",
+    "published": false,
     "title": "Contenido de marca · producto",
     "description": "Fotografía de producto premium para e-commerce y redes.",
     "client": "Marca retail",

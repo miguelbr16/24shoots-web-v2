@@ -91,6 +91,7 @@ export default async function HomePage({
   const instagramPosts = getInstagramPosts(locale);
   const featuredClients = getFeaturedClients();
   const { home } = pages;
+  const verifiedReviews = home.reviewsSection.items.filter((r) => r.verified);
 
   const jsonLd = buildOrganizationJsonLd(locale);
   const instagramHandle = site.contact.instagram
@@ -203,21 +204,23 @@ export default async function HomePage({
       />
       <StatsStrip stats={home.statsSection} />
 
-      {/* Confianza social */}
-      <ClientSocialProofSection
-        locale={locale}
-        clients={featuredClients}
-        headline={home.clientsSection.headline}
-        headlineAccent={home.clientsSection.headlineAccent}
-        headlineBrand={home.clientsSection.headlineBrand}
-        subline={home.clientsSection.subline}
-        dragHint={home.clientsSection.dragHint}
-        privacyNote={home.clientsSection.privacyNote}
-        ctaLabel={home.clientsSection.ctaLabel}
-        reviewsTitle={home.reviewsSection.title}
-        reviewsSubtitle={home.reviewsSection.subtitle}
-        reviews={home.reviewsSection.items}
-      />
+      {/* Confianza social: solo con logos y reseñas reales autorizados */}
+      {featuredClients.length > 0 && (
+        <ClientSocialProofSection
+          locale={locale}
+          clients={featuredClients}
+          headline={home.clientsSection.headline}
+          headlineAccent={home.clientsSection.headlineAccent}
+          headlineBrand={home.clientsSection.headlineBrand}
+          subline={home.clientsSection.subline}
+          dragHint={home.clientsSection.dragHint}
+          privacyNote={home.clientsSection.privacyNote}
+          ctaLabel={home.clientsSection.ctaLabel}
+          reviewsTitle={home.reviewsSection.title}
+          reviewsSubtitle={home.reviewsSection.subtitle}
+          reviews={verifiedReviews}
+        />
+      )}
 
       {/* 9. Fricción final */}
       <FaqSection

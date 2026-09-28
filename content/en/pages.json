@@ -141,7 +141,7 @@
     "statsSection": [
       { "value": "Valencia", "label": "Home base" },
       { "value": "Spain", "label": "Nationwide coverage" },
-      { "value": "7", "label": "Service lines" },
+      { "value": "10", "label": "Service lines" },
       { "value": "24h", "label": "Typical response time" }
     ],
     "clientsSection": {

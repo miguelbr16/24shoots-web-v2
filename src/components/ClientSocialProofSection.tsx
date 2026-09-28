@@ -91,15 +91,17 @@ export function ClientSocialProofSection({
         </p>
       </div>
 
-      <div className="relative z-20 bg-surface pb-14 pt-4 md:pb-20 md:pt-6">
-        <AccentDivider className="mb-8 px-4 md:mb-10" />
-        <div className="mx-auto max-w-6xl px-4 md:px-6">
-          <ReviewsCarousel title={reviewsTitle} subtitle={reviewsSubtitle} items={reviews} />
-          <p className="mx-auto mt-10 max-w-lg text-center text-xs leading-relaxed text-muted/75">
-            {privacyNote}
-          </p>
+      {reviews.length > 0 && (
+        <div className="relative z-20 bg-surface pb-14 pt-4 md:pb-20 md:pt-6">
+          <AccentDivider className="mb-8 px-4 md:mb-10" />
+          <div className="mx-auto max-w-6xl px-4 md:px-6">
+            <ReviewsCarousel title={reviewsTitle} subtitle={reviewsSubtitle} items={reviews} />
+            <p className="mx-auto mt-10 max-w-lg text-center text-xs leading-relaxed text-muted/75">
+              {privacyNote}
+            </p>
+          </div>
         </div>
-      </div>
+      )}
     </section>
   );
 }

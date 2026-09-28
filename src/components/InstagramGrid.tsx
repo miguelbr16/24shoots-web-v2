@@ -195,7 +195,8 @@ export function InstagramGrid({
         </div>
 
         <div className="grid grid-cols-2 auto-rows-fr gap-px bg-border md:grid-cols-4">
-          {posts.map((post, i) =>
+          {/* Con la primera pieza a 2×2, 5 piezas cierran la rejilla sin huecos */}
+          {posts.slice(0, 5).map((post, i) =>
             post.embed ? (
               <EmbedTile
                 key={post.id}

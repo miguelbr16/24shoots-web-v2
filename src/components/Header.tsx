@@ -2,9 +2,15 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import type { Locale } from "@/lib/types";
-import { getRoute, getHomeRoute } from "@/lib/i18n";
+import {
+  getRoute,
+  getHomeRoute,
+  localizePath,
+  type ServiceSlugPair,
+} from "@/lib/i18n";
 import { Button, LocaleSwitcher } from "./ui";
 
 interface HeaderProps {
@@ -12,7 +18,7 @@ interface HeaderProps {
   nav: Record<string, string>;
   logo: string;
   siteName: string;
-  alternatePath: string;
+  serviceSlugs: ServiceSlugPair[];
 }
 
 function ViewfinderMark() {
@@ -29,8 +35,14 @@ export function Header({
   nav,
   logo,
   siteName,
-  alternatePath,
+  serviceSlugs,
 }: HeaderProps) {
+  const pathname = usePathname();
+  const alternatePath = localizePath(
+    pathname,
+    locale === "es" ? "en" : "es",
+    serviceSlugs
+  );
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 

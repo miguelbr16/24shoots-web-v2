@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { getSiteConfig } from "./content";
+import { getServiceSlugPairs, getSiteConfig } from "./content";
+import { localizePath } from "./i18n";
 import type { Locale } from "./types";
 
 export function buildMetadata({
@@ -16,7 +17,11 @@ export function buildMetadata({
   const site = getSiteConfig();
   const fullTitle = title ? `${title} | ${site.name}` : site.name;
   const desc = description ?? site.description[locale];
-  const url = `${site.url}/${locale}${path}`;
+  const localPath = `/${locale}${path}`;
+  const url = `${site.url}${localPath}`;
+  const pairs = getServiceSlugPairs();
+  const altPath = (to: Locale) =>
+    to === locale ? localPath : localizePath(localPath, to, pairs);
 
   return {
     title: fullTitle,
@@ -25,8 +30,9 @@ export function buildMetadata({
     alternates: {
       canonical: url,
       languages: {
-        es: `${site.url}/es${path}`,
-        en: `${site.url}/en${path}`,
+        es: `${site.url}${altPath("es")}`,
+        en: `${site.url}${altPath("en")}`,
+        "x-default": `${site.url}${altPath("es")}`,
       },
     },
     openGraph: {

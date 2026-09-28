@@ -16,6 +16,8 @@ interface ContactFormProps {
   locale: string;
   privacyHref: string;
   initialPackSlug?: string;
+  /** Vías directas que se muestran si el envío falla */
+  fallback: { email: string; whatsappUrl: string };
 }
 
 export function ContactForm({
@@ -25,13 +27,14 @@ export function ContactForm({
   locale,
   privacyHref,
   initialPackSlug,
+  fallback,
 }: ContactFormProps) {
   const defaultPackTitle =
     packs.find((p) => p.slug === initialPackSlug)?.title ?? "";
 
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
-    "idle"
-  );
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -57,11 +60,15 @@ export function ContactForm({
 
   const inputClass =
     "w-full rounded-sm border border-border bg-background px-4 py-3.5 text-sm outline-none transition focus:border-accent";
-  const labelClass = "mb-2 block text-[11px] font-semibold uppercase tracking-[0.12em] text-muted";
+  const labelClass =
+    "mb-2 block text-[11px] font-semibold uppercase tracking-[0.12em] text-muted";
 
   if (status === "success") {
     return (
-      <div className="border border-accent/30 bg-surface p-10 text-center">
+      <div
+        role="status"
+        className="border border-accent/30 bg-surface p-10 text-center"
+      >
         <p className="text-base font-light text-foreground">
           {labels.form.success}
         </p>
@@ -74,22 +81,70 @@ export function ContactForm({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      {/* Honeypot anti-spam: invisible para personas */}
+      <div
+        aria-hidden
+        className="absolute -left-[9999px] h-px w-px overflow-hidden"
+      >
+        <label htmlFor="cf-website">Website</label>
+        <input
+          id="cf-website"
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
-          <label className={labelClass}>{labels.form.name} *</label>
-          <input name="name" required className={inputClass} />
+          <label htmlFor="cf-name" className={labelClass}>
+            {labels.form.name} *
+          </label>
+          <input
+            id="cf-name"
+            name="name"
+            required
+            autoComplete="name"
+            maxLength={120}
+            className={inputClass}
+          />
         </div>
         <div>
-          <label className={labelClass}>{labels.form.email} *</label>
-          <input name="email" type="email" required className={inputClass} />
+          <label htmlFor="cf-email" className={labelClass}>
+            {labels.form.email} *
+          </label>
+          <input
+            id="cf-email"
+            name="email"
+            type="email"
+            required
+            autoComplete="email"
+            inputMode="email"
+            className={inputClass}
+          />
         </div>
         <div>
-          <label className={labelClass}>{labels.form.phone}</label>
-          <input name="phone" type="tel" className={inputClass} />
+          <label htmlFor="cf-phone" className={labelClass}>
+            {labels.form.phone}
+          </label>
+          <input
+            id="cf-phone"
+            name="phone"
+            type="tel"
+            autoComplete="tel"
+            className={inputClass}
+          />
         </div>
         <div>
-          <label className={labelClass}>{labels.form.service} *</label>
-          <select name="service" required className={inputClass}>
+          <label htmlFor="cf-service" className={labelClass}>
+            {labels.form.service} *
+          </label>
+          <select
+            id="cf-service"
+            name="service"
+            required
+            className={inputClass}
+          >
             <option value="">—</option>
             {services.map((s) => (
               <option key={s.id} value={s.title}>
@@ -99,8 +154,11 @@ export function ContactForm({
           </select>
         </div>
         <div className="sm:col-span-2">
-          <label className={labelClass}>{packLabel}</label>
+          <label htmlFor="cf-pack" className={labelClass}>
+            {packLabel}
+          </label>
           <select
+            id="cf-pack"
             name="pack"
             defaultValue={defaultPackTitle}
             className={inputClass}
@@ -116,8 +174,10 @@ export function ContactForm({
           </select>
         </div>
         <div>
-          <label className={labelClass}>{labels.form.sector}</label>
-          <select name="sector" className={inputClass}>
+          <label htmlFor="cf-sector" className={labelClass}>
+            {labels.form.sector}
+          </label>
+          <select id="cf-sector" name="sector" className={inputClass}>
             <option value="">—</option>
             {labels.sectorOptions.map((opt) => (
               <option key={opt} value={opt}>
@@ -127,12 +187,16 @@ export function ContactForm({
           </select>
         </div>
         <div>
-          <label className={labelClass}>{labels.form.date}</label>
-          <input name="date" type="date" className={inputClass} />
+          <label htmlFor="cf-date" className={labelClass}>
+            {labels.form.date}
+          </label>
+          <input id="cf-date" name="date" type="date" className={inputClass} />
         </div>
         <div className="sm:col-span-2">
-          <label className={labelClass}>{labels.form.budget}</label>
-          <select name="budget" className={inputClass}>
+          <label htmlFor="cf-budget" className={labelClass}>
+            {labels.form.budget}
+          </label>
+          <select id="cf-budget" name="budget" className={inputClass}>
             <option value="">—</option>
             {labels.budgetOptions.map((opt) => (
               <option key={opt} value={opt}>
@@ -142,8 +206,17 @@ export function ContactForm({
           </select>
         </div>
         <div className="sm:col-span-2">
-          <label className={labelClass}>{labels.form.message} *</label>
-          <textarea name="message" required rows={5} className={inputClass} />
+          <label htmlFor="cf-message" className={labelClass}>
+            {labels.form.message} *
+          </label>
+          <textarea
+            id="cf-message"
+            name="message"
+            required
+            rows={5}
+            maxLength={5000}
+            className={inputClass}
+          />
         </div>
         <div className="sm:col-span-2">
           <label className={`${labelClass} !normal-case !tracking-normal`}>
@@ -155,7 +228,10 @@ export function ContactForm({
               className="mr-3 accent-accent"
             />
             {labels.form.privacyAccept}{" "}
-            <Link href={privacyHref} className="text-accent underline-offset-2 hover:underline">
+            <Link
+              href={privacyHref}
+              className="text-accent underline-offset-2 hover:underline"
+            >
               {labels.form.privacyPolicyLink}
             </Link>
             *
@@ -164,7 +240,28 @@ export function ContactForm({
       </div>
 
       {status === "error" && (
-        <p className="text-sm text-red-400">{labels.form.error}</p>
+        <div
+          role="alert"
+          className="border border-red-400/40 bg-red-400/5 p-4 text-sm"
+        >
+          <p className="text-red-300">{labels.form.error}</p>
+          <p className="mt-3 flex flex-wrap gap-x-6 gap-y-2">
+            <a
+              href={`mailto:${fallback.email}`}
+              className="text-accent hover:underline"
+            >
+              {fallback.email}
+            </a>
+            <a
+              href={fallback.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent hover:underline"
+            >
+              WhatsApp
+            </a>
+          </p>
+        </div>
       )}
 
       <Button type="submit" disabled={status === "loading"} showArrow>

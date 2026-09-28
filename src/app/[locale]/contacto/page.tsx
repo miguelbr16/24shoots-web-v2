@@ -76,6 +76,10 @@ export default async function ContactoPage({
           sectorOptions: pages.contact.sectorOptions,
         }}
         locale={locale}
+        fallback={{
+          email: site.contact.email,
+          whatsappUrl: `https://wa.me/${site.contact.whatsapp.replace(/\D/g, "")}`,
+        }}
       />
     </div>
   );

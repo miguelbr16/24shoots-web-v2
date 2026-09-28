@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { defaultLocale, locales } from "@/lib/i18n";
+import { defaultLocale, fixCrossLocaleSection, locales } from "@/lib/i18n";
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -21,6 +21,14 @@ export function middleware(request: NextRequest) {
     const url = request.nextUrl.clone();
     url.pathname = `/${defaultLocale}${pathname === "/" ? "" : pathname}`;
     return NextResponse.redirect(url);
+  }
+
+  // /es/services → /es/servicios (y viceversa): una sola URL por página
+  const fixed = fixCrossLocaleSection(pathname);
+  if (fixed) {
+    const url = request.nextUrl.clone();
+    url.pathname = fixed;
+    return NextResponse.redirect(url, 308);
   }
 
   return NextResponse.next();
