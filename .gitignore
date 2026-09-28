@@ -18,3 +18,4 @@ Thumbs.db
 
 # Copias locales de seguridad (ver docs/AVANCES-2026-07-24.md)
 /backups/
+*.tsbuildinfo
